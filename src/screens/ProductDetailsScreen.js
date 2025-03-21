@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View, Image, FlatList, useWindowDimensions, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, useWindowDimensions, Pressable, ScrollView } from 'react-native'
 import React from 'react'
 import products from '../data/products'
 
 const ProductDetailsScreen = () => {
     const product = products[0];
     const { width } = useWindowDimensions();
+
+    const  addToCart =()=>{
+        console.warn('Add to cart');
+    }
 
     return (
         <View>
@@ -25,6 +29,9 @@ const ProductDetailsScreen = () => {
                     <Text style={styles.description}>{product.description}</Text>
                 </View>
             </ScrollView>
+            <Pressable onPress={addToCart} style={styles.button}>
+                <Text style={styles.buttonText}>Add to cart</Text>
+            </Pressable>
         </View>
     )
 }
@@ -46,5 +53,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 28,
         fontWeight: '300'
+    },
+    button: {
+        position: 'absolute',
+        backgroundColor: 'black',
+        bottom: 30,
+        width: '90%',
+        alignSelf: 'center',
+        padding: 20,
+        borderRadius: 100,
+        alignItems: 'center'
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: '500',
+        fontSize: 16
     }
 })
