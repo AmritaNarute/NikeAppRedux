@@ -6,7 +6,7 @@ const ProductDetailsScreen = () => {
     const product = products[0];
     const { width } = useWindowDimensions();
 
-    const  addToCart =()=>{
+    const addToCart = () => {
         console.warn('Add to cart');
     }
 
