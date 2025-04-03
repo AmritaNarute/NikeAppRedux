@@ -1,18 +1,27 @@
-import { StyleSheet, Text, View, Image, FlatList, useWindowDimensions, Pressable, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, useWindowDimensions,  Pressable, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import products from '../data/products'
 import { useSelector, useDispatch } from 'react-redux'
-import { cartSlice} from '../store/cartSlice'
+import { cartSlice } from '../store/cartSlice'
 
 const ProductDetailsScreen = () => {
+
     const product = useSelector((state) => state.products.selectedProduct);
     const dispatch = useDispatch();
 
     const { width } = useWindowDimensions();
 
     const addToCart = () => {
-        dispatch(cartSlice.actions.addCartItem({ product: product}));
-    }
+        dispatch(cartSlice.actions.addCartItem({ product }));
+    };
+    // const product = useSelector((state) => state.products.selectedProduct);
+    // const dispatch = useDispatch();
+
+    // const { width } = useWindowDimensions();
+
+    // const addToCart = () => {
+    //     dispatch(cartSlice.actions.addCartItem({ product: product}));
+    // }
 
     return (
         <View>
@@ -33,9 +42,9 @@ const ProductDetailsScreen = () => {
                     <Text style={styles.description}>{product.description}</Text>
                 </View>
             </ScrollView>
-            <Pressable onPress={addToCart} style={styles.button}>
+            <TouchableOpacity onPress={addToCart} style={styles.button}>
                 <Text style={styles.buttonText}>Add to cart</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
     )
 }
