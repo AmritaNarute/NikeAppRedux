@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, FlatList, useWindowDimensions, Pressable, ScrollView } from 'react-native'
 import React from 'react'
 import products from '../data/products'
-import { useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { cartSlice} from '../store/cartSlice'
 
 const ProductDetailsScreen = () => {
@@ -11,7 +11,7 @@ const ProductDetailsScreen = () => {
     const { width } = useWindowDimensions();
 
     const addToCart = () => {
-        dispatch(cartSlice.actions.addCartItem({ product }));
+        dispatch(cartSlice.actions.addCartItem({ product: product}));
     }
 
     return (
